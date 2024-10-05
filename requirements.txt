@@ -4,3 +4,4 @@ git+https://github.com/roger-/pyrtlsdr.git@master#egg=pyrtlsdr
 tinydb
 ujson
 kivy
+defusedxml==0.7.1

@@ -1,9 +1,9 @@
 import os.path
 import datetime
-import xml.etree.ElementTree as ET
 import itertools
 
 from wwb_scanner.scan_objects import Spectrum
+import defusedxml.ElementTree
 
 class BaseImporter(object):
     def __init__(self, **kwargs):
@@ -48,7 +48,7 @@ class CSVImporter(BaseImporter):
 
 class BaseWWBImporter(BaseImporter):
     def load_file(self):
-        return ET.parse(self.filename)
+        return defusedxml.ElementTree.parse(self.filename)
 
 class WWBImporter(BaseWWBImporter):
     _extension = 'sdb2'
