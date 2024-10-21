@@ -15,7 +15,7 @@ class RtlPowerScanner(ScannerBase):
             self.gain,
             fir_size,
         )
-        self.result = subprocess.check_output(cmd_str, shell=True)
+        self.result = subprocess.check_output(cmd_str, shell=False)
         spectrum = self.spectrum
         for line in self.result.splitlines():
             values = line.split(',')
