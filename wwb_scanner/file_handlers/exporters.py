@@ -3,7 +3,7 @@ import datetime
 import uuid
 from StringIO import StringIO
 import xml.etree.ElementTree as ET
-import xml.dom.minidom as minidom
+import defusedxml.minidom
 
 EPOCH = datetime.datetime(1970, 1, 1)
 
@@ -127,7 +127,7 @@ class BaseWWBExporter(BaseExporter):
         tree = self.build_data()
         fd = StringIO()
         tree.write(fd, encoding='UTF-8', xml_declaration=True)
-        doc = minidom.parseString(fd.getvalue())
+        doc = defusedxml.minidom.parseString(fd.getvalue())
         fd.close()
         s = doc.toprettyxml(encoding='UTF-8')
         with open(self.filename, 'w') as f:
